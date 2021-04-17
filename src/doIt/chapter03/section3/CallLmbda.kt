@@ -14,16 +14,27 @@ package doIt.chapter03.section3
  */
 
 fun main(){
-    val result = callByValue(lambda())
+    val result = callByValue(lambda("callByValue"))
     println(result)
+
+    println()
+    val result2 = callByName(lambda)
+    println(result2)
 }
 
-fun callByValue(b: Boolean):Boolean{
+fun callByValue(b: Boolean):Boolean{ // 인자 값에 일반 변수로 선언되어 있음
     println("callByValue function")
     return b
 }
 
-val lambda:()->Boolean = {
-    println("lambda function")
+fun callByName(b: (String)->Boolean):Boolean{
+    b("callByName_1") // 어디서든지 호출 가능하다.
+    println("callByName function")
+    // 호출 전까지는
+    return b("callByName_2") // 어느곳에서든 받은 람다식을 호출시킬 수 있음.
+}
+
+val lambda:(String)->Boolean = { str ->
+    println("lambda function : $str")
     true
 }
