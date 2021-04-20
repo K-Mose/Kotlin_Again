@@ -26,6 +26,9 @@ eg. highFunc({x, y-> x+y}, 10, 20) // 람다식 함수를 인자로 넘김
   * 순수 함수를 사용해야 한다
   * 람다식을 사용할 수 있다
   * 고차 함수를 사용할 수 있다.
+
+람다식의 선언과 할당
+val lambda : (Int, Int) -> Int = {A:Int, B:Int -> A+B}
  */
 
 fun highOrder(getFunction:(Int, Int)->Int, a:Int, b:Int):Int{
