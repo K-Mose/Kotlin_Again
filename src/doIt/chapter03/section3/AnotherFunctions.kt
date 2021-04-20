@@ -60,13 +60,11 @@ inline fun shortFunc(a:Int, out:(Int)->Unit){
     out(a)
     println("inline After calling out()")
 }
-
 inline fun noShortFunc(a:Int, noinline out:(Int)->Unit){
     println("noinline Before calling out()")
     out(a)
     println("noinline After calling out()")
 }
-
 inline fun returnLambda(a:Int, crossinline cross:()->Unit, out: (Int) -> Unit){
     println("return Before calling out()")
     cross()
