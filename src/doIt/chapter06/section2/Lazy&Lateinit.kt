@@ -34,6 +34,13 @@ lazy의 모드 3가지
     특정 자원 사용할 때 다른 스레드에 의해 값이 변경될 수 있음.
     따라서 이것을 보호하기 위해 lock을 사용하는 synchronized(){} 블록을 사용함
     """
+
+public actual fun <T> lazy(initializer: () -> T): Lazy<T> = SynchronizedLazyImpl(initializer)
+lazy는 람다식을 받기 떄문에 by lazy {} 코드블럭으로 사용 가능
+lazy의 동작
+    1. lazy 람다식은 람다식을 전달받아 지정한 Lazy<T> 인스턴스를 반환
+    2. 최초 프로퍼티의 게터 실행은 lazy에 넘겨진 람다식을 실행하고 결과를 기록
+    3. 이후 프로퍼트의 게터 실행은 이미 초기화되어 기록된 값을 반환함
  */
 
 fun main() {
