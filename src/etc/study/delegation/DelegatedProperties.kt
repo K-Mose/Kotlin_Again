@@ -231,7 +231,11 @@ class MyUI {
     val text by bindResource(ResourceID.text_id)
 }
 """
+<<<<<<< HEAD
 위에는 provideDelegate 함수가 MyUI와 리소스를 바인드하기 위해 대리자로 사용되지만
+=======
+위에는 provideDelegate 함수가 MyUI와 리소스가 바인드하기 위해 대리자로 사용되지만
+>>>>>>> origin/master
 아래에는 provideDelegate를 사용하지 않아 명시적으로 객체의 이름을 쓰고 있습니다.
 즉, 대리자를 사용하면 암시적으로 바인딩이 된다는 소리??
 """
