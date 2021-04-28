@@ -1,7 +1,7 @@
 package doIt.chapter07.section2
 
 /*
-https://kotlinlang.org/docs/annotations.html#usage - 좀 더 자세히 볼 것
+https://kotlinlang.org/docs/annotations.html#usage - 예제 참고
 애노테이션 클래스 - Annotation Class
 애노테이션은 코드에 부가적인 정보를 추가하는 기법이다.
 @ 기호와 함께 나타내며, @Test는 유닛 테스트, @JvmStatic은 자바 코드에서 컴패니언 객체 접근 등 다양하다.
@@ -33,6 +33,43 @@ annotation class [애노테이션 이름]
 https://kotlinlang.org/docs/reflection.html#class-references
 -> ReflectionTEST로 이동
 
+애노테이션의 위치
+애노테이션은 클래스, 메서드, 프로퍼티나 반환 값 앞에 표시할 수 있다.
+반환 값에 표시할 때는 같이 소괄호로 묶어준다.
+생성자 앞에 애노테이션을 사용한다면 constructor 키워드를 생략할 수 없다.
+프로퍼티안에 게터와 세터에도 사용 가능하다
+
+애노테이션의 매개변수와 생성자
+애노테이션에 매개변수를 지정하고자 하려면 다음과 같이 파라메터를 받는다.
+annotation class Special(val why: String)
+@Special("example") class Foo {}
+매개변수로 허용되는 타입
+    1. 자바 기본형과 연동하는 자료형
+    2. 문자형
+    3. 클래스
+    4. 열거형
+    5. 기타 애노테이션
+    6. 위의 목록을 가지는 배열
+JVM에서 null을 애노테이션의 속성으로 지원하지 않아 애노테이션 매개변수는 nullable을 할 수 없다.
+만약 애노테이션이 다른 애노테이션의 매개변수로 들어갔다면 @기호를 사용하지 않아도 된다.
+특정한 클래스를 애노테이션의 매개변수로 필요로 한다면, Kotlin class(KClass)를 사용하면 된다.
+코틀린 컴파일러가 자동적으로 자바 클래스로 변환시켜준다.
+그래서 자바 코드에서 애노테이션과 매개변수를 정상적으로 접근 가능하다.
+
+람다 *
+애노테이션은 람다로 사용할 수 있다.
+람다의 바디가 생서되었을 때, invoke() 메소드가 그 안에 적용된다.
+동시 실행 컨트롤(concurrency control) 애노테이션을 사용하는 Quasar 프레임워크에 유용하게 쓰인다.
+eg. annotation class Suspendable
+    val f = @Suspendable { Fiber.sleep(10) }
+
+표준 애노테이션
+    1. @JvmName("filter"): filter()라는 이름을 자바에서 각각
+       filterString()과 filterInts()로 바꿔준다.
+    2. @JvmStatic: 자바의 정적 메서드로 생성하게 해줌
+    3. @Throw: 코틀린의 throw 구문이 자바에서도 포함되게 해줌
+    4. @JvmOverloads: 코틀린에서 기본값을 적용한 인자에 함수를 모두 오버로딩해 준다.
+    -> 표준 애노테이션은 자바와 원할하게 연동하는데 목적을 둔다.
  */
 
 // 선언 및 사용
