@@ -98,6 +98,7 @@ fun arraySortedClass(){
         println(it.maxByOrNull { p -> p.price })
         println(it.minByOrNull { p -> p.price })
     }
+    products.forEachIndexed { index, product -> println("$product / ${products[index]}")  }
 }
 
 fun arraySortWith(){
